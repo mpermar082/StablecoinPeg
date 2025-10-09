@@ -1,6 +1,8 @@
 // src/main.rs
 /*
  * Main executable for StablecoinPeg
+ * 
+ * This file contains the main entry point for the StablecoinPeg CLI tool.
  */
 
 use clap::Parser;
@@ -23,10 +25,16 @@ struct Cli {
     output: Option<String>,
 }
 
+/// Run the StablecoinPeg executable with the provided arguments
+fn run_stablecoinpeg(verbose: bool, input: Option<String>, output: Option<String>) -> Result<()> {
+    // Run the StablecoinPeg executable with the provided arguments
+    run(verbose, input, output)
+}
+
 fn main() -> Result<()> {
     // Parse command-line arguments
     let args = Cli::parse();
     
     // Run the StablecoinPeg executable with the provided arguments
-    run(args.verbose, args.input, args.output)
+    run_stablecoinpeg(args.verbose, args.input, args.output)
 }
